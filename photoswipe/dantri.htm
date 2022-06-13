@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html id="html" xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>viewpicture</title>
+</head>
+
+<style>
+figure {display:block; width:360px!important; margin:0; padding:0;}
+figure img {width:360px!important; height:auto;}
+</style>
+
+<body>
+<figure><img title="picture1" alt="picture1" src="1.jpg" data-width="640" data-height="425"></figure>
+<figure><img title="picture2" alt="picture1" src="2.jpg" data-width="640" data-height="398"></figure>
+<figure><img title="picture3" alt="picture1"src="3.jpg" data-width="640" data-height="936"></figure>
+
+<link rel='stylesheet' href='style.css'>
+<script src='script.js'></script>
+
+
+<script>
+add_photoswipe_elements();
+var items = [];
+var images = $("figure img");
+images.on("click", initPhotoSwipe);
+
+
+
+function _photoswipe() {
+	images.addClass("pswp-img");
+	images.map(function (index, el) {
+		$(el.parentElement).addClass("img-wrapper");
+		$("<figcaption>add Thêm thẻ mới.</figcaption>").insertAfter(el);
+	});
+	
+	items = images.map(function (index, el) {
+		var caption = "";
+		if (el.parentElement.querySelector("figcaption")) {
+			caption = el.parentElement.querySelector("figcaption").textContent;
+		}
+		var img= el.getAttribute("data-original"); if (!img) img= el.src;
+		return {
+			src: img,
+			w: el.getAttribute("data-width"),
+			h: el.getAttribute("data-height"),
+			title: caption
+		};
+	});
+}
+
+
+
+function initPhotoSwipe(){
+	var imgSrc = event.target.getAttribute("data-original"); 
+	if (!imgSrc) imgSrc= event.target.src;
+	var imgIndex = 0;
+	for (i = 0; i < items.length; i++) if (items[i].src == imgSrc) {imgIndex = i; break;}
+	var pswpElement = document.querySelectorAll(".pswp")[0];
+	var options = {
+		index: imgIndex, // start at first slide
+		getThumbBoundsFn: function (index) {
+			// find thumbnail element
+			var thumbnail = document.querySelectorAll(".pswp-img")[index];
+
+			// get window scroll Y
+			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+			// optionally get horizontal scroll
+
+			// get position of element relative to viewport
+			var rect = thumbnail.getBoundingClientRect();
+
+			// w = width
+			return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+
+			// Good guide on how to get element coordinates:
+			// http://javascript.info/tutorial/coordinates
+		}
+	};
+	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+	gallery.init();
+}
+
+_photoswipe();
+</script>
+
+
+</body>
+</html>

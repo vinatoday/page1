@@ -1,0 +1,13 @@
+﻿figure {display:block; width:100%!important; margin:0; margin-bottom:5px; padding:0;}
+textarea[class="view-code"]{height: 269px;}
+figure img {
+	width:100%!important; height:auto; cursor:pointer; 
+	border-radius:3px; box-shadow: 0 0 5px #ccc;
+}
+
+.view-code, pre {
+	width:100%!important; background: #f7f8d4!important; 
+	overflow: auto !important; box-sizing: border-box;
+	font: icon;
+	font-size: 14px;
+}

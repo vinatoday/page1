@@ -1,0 +1,44 @@
+@keyframes fa-spin {
+  0%   {transform: rotate(0deg);   -webkit-transform: rotate(0deg);  }
+  100% {transform: rotate(359deg); -webkit-transform: rotate(359deg);}
+}
+
+.divPlay:hover {opacity:0.8;}
+.divPlay {
+	width:100%; max-width:300px; min-width:230px; height:210px;
+	cursor:pointer; display:block; position: relative; overflow:hidden;
+}
+.layerPlay {position:absolute;}
+.hinhCD, .thumbCD {background-repeat: no-repeat;background-position: center center;	background-size: cover;}
+
+.hinhCD  {width: 168px; height: 168px;  right: 5px;  top:18px; border-radius:100%; z-index: 1; }
+.bgCD    {width: 258px; height: 205px;  right: 0;    top:0; background:url(bgcd.png); z-index: 2; }
+.thumbCD {width: 220px; height: 180px;  right: 78px; top:12px; z-index: 3; }
+
+.thoiGian {
+	z-index:4; width:60%; height:36px; bottom:0; right:86px; text-align:right;
+	color:#fff; text-shadow:0 0 3px #000; font:normal bold 10px Tahoma;
+}
+
+.hinhCD[play="on"]{
+	-webkit-animation: fa-spin 5s infinite linear;
+	animation: fa-spin 6s infinite linear;
+	
+}
+.tieude:hover {color:blue}
+.tieude {
+	margin:0; padding:0px 0px; font-size:24px; cursor:pointer;
+	color: #0f4881; text-shadow: 0px 1px 3px #a4a4a4;
+}
+
+.tientrinh {width:100%;}
+.tientrinh input {width:100%; max-width:180px;}
+
+#listsong {margin:0;}
+#listsong li {padding:5px 0px 0px 3px; border-bottom: 1px dotted #fbd01b;}
+
+.itemsong {cursor:pointer; font-style:normal;}
+.itemsong:hover {text-decoration: underline;}
+.itemsong[item="playing"] {color:blue;}
+.itemsong[item="playing"]:before {font-size:16px; color:red; margin-left:-8px; content: "♥";}
+.nghesi {border-radius: 10%  !important; background: #4b087a !important;}

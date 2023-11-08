@@ -1,5 +1,5 @@
 	var id_player= 0;
-window.onerror= function(msg,url,line) {alert('Message: '+msg+', url: ' +url+ ', Line number: ' + line);}
+//window.onerror= function(msg,url,line) {alert('Message: '+msg+', url: ' +url+ ', Line number: ' + line);}
 function ___(id) {return document.getElementById(id);}
 function strToInt(s)  {var num= parseInt(s);  return (num+''=='NaN')? 0:num;}
 function strToFloat(s){var num= parseFloat(s);return (num+''=='NaN')? 0:num;}
